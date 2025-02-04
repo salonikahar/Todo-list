@@ -1,36 +1,114 @@
-<h2>Features</h2>
-<ul>
-  <li>Add new tasks</li>
-  <li>Mark tasks as completed</li>
-  <li>Delete tasks</li>
-  <li>Responsive and centered layout</li>
-</ul>
+# ToDoApp
 
-<h2>Installation</h2>
-<p>Follow these steps to run the ToDo App locally:</p>
-<ol>
-  <li>Clone the repository:</li>
-  <pre><code>git clone https://github.com/your-username/todo-app.git</code></pre>
-  
-  <li>Navigate to the project directory:</li>
-  <pre><code>cd todo-app</code></pre>
+A simple and responsive ToDo application built using React. This app allows users to add, complete, and delete tasks efficiently.
 
-  <li>Install the dependencies:</li>
-  <pre><code>npm install</code></pre>
+## Features
 
-  <li>Run the application:</li>
-  <pre><code>npm start</code></pre>
+- Add new tasks to your list
+- Mark tasks as completed
+- Delete tasks from the list
+- Responsive design with modern UI
 
-  <li>Open your browser and go to <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>.</li>
-</ol>
+## Technologies Used
 
-<h2>Usage</h2>
-<p>Once the app is running:</p>
-<ul>
-  <li>Type your task into the input field and click <strong>Add</strong> to create a new task.</li>
-  <li>Click the checkbox next to a task to mark it as completed.</li>
-  <li>Click the <strong>Delete</strong> button to remove a task from the list.</li>
-</ul>
+- React (useState Hook)
+- JavaScript (ES6+)
+- Inline CSS for styling
 
-<h2>Code Overview</h2>
-<p>The main component of the app is the <code>ToDoApp</code> component, which handles adding, toggling, and deleting tasks.</p>
+## Installation
+
+Follow these steps to set up the project locally:
+
+1. **Clone the repository:**  
+```bash
+git clone https://github.com/yourusername/todo-app.git
+```
+
+2. **Navigate to the project directory:**  
+```bash
+cd todo-app
+```
+
+3. **Install dependencies:**  
+```bash
+npm install
+```
+
+4. **Start the development server:**  
+```bash
+npm start
+```
+
+The app will run at `http://localhost:3000` by default.
+
+## Usage
+
+1. **Add a Task:**  
+   - Enter a task in the input field.
+   - Click the **Add** button to include it in the list.
+
+2. **Mark as Completed:**  
+   - Click the checkbox next to a task to mark it as completed. Completed tasks will appear with a strikethrough.
+
+3. **Delete a Task:**  
+   - Click the **Delete** button next to a task to remove it from the list.
+
+## Code Overview
+
+### Main Components:
+
+1. **useState Hooks:**
+   - `tasks`: Holds the array of task objects.
+   - `task`: Manages the current task input value.
+
+2. **Functions:**
+   - `addTask()`: Adds a new task to the list if the input is not empty.
+   - `toggleTask(index)`: Toggles the completion status of a task.
+   - `deleteTask(index)`: Removes a task from the list.
+
+3. **Styling:**
+   - Inline CSS is used for basic styling and responsive design.
+
+## Example Code
+
+```javascript
+const [tasks, setTasks] = useState([]);
+const [task, setTask] = useState("");
+
+const addTask = () => {
+  if (task.trim() !== "") {
+    setTasks([...tasks, { task: task, completed: false }]);
+    setTask("");
+  }
+};
+
+const toggleTask = (index) => {
+  const updatedTasks = tasks.map((t, i) =>
+    i === index ? { ...t, completed: !t.completed } : t
+  );
+  setTasks(updatedTasks);
+};
+
+const deleteTask = (index) => {
+  setTasks(tasks.filter((_, i) => i !== index));
+};
+```
+
+## Contributing
+
+Contributions are welcome! Feel free to fork the repository and submit pull requests.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For any inquiries or feedback, reach out via [your.email@example.com](mailto:your.email@example.com).
+
